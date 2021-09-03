@@ -1,13 +1,12 @@
 const mysql = require('mysql2/promise');
-const config = require('config')
 
 const mysqlConnection = async () => {
   try {
     global.connection = await mysql.createConnection({
-      host: config.databaseSettings.host,
-      user: config.databaseSettings.user,
-      password: config.databaseSettings.password,
-      database: config.databaseSettings.database,  
+      host: process.env.HOST,
+      user: process.env.DB_USER,
+      password: "password",
+      database: "topmovers",  
     });
     
     console.table([{
